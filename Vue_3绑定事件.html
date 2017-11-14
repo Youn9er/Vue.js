@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Vue_3绑定事件</title>
+	</head>
+	<body>
+		<div id="myApp">
+			<button v-on:click="fn()">click1</button>
+			<button v-on:click="fn1(3,4)">click2</button>	<!-- v-on:绑定事件 -->
+			<button v-on:click="fn2()">click3</button>
+
+			<button v-on:click="fn3">点击次数</button>
+			<span v-model="message">您点击了{{message}}次</span>
+
+			<button v-on:click="message++">点击次数</button>
+			<span v-model="message">您点击了{{message}}次</span>
+
+			<button @click="fn3">点击次数简写</button>	<!-- v-on简写形式@click -->
+			<span v-model="message">您点击了{{message}}次</span>
+		</div>
+		
+		<script src="vue.min.js"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:"#myApp",
+				data:{
+					message:0
+				},
+				methods:{			//methods  方法集合
+					fn:function(){
+						console.log("Younger");
+					},
+					fn1:function(a,b){
+						console.log(a+b);
+					},
+					fn2:function(){
+						console.log(event.target);
+					},
+					fn3:function(){
+						this.message++;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
