@@ -11,13 +11,14 @@
 		</div>
 
 		<div id="myApp-2">
-			<span v-bind:title="message">
+			<span v-bind:title="message">	<!-- 绑定 DOM 元素属性 -->
 				鼠标悬停查看加载信息
 			</span>
 		</div>
 
 		<script src="vue.min.js"></script>
 		<script type="text/javascript">
+			/*简洁的模板语法来声明式的将数据渲染进 DOM 的系统*/
 			var app = new Vue({
 				el:"#myApp",			//element  渲染myApp下的所有DOM节点
 				data:{
