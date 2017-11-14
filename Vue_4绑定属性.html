@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Vue_4绑定属性</title>
+		<style type="text/css">
+			#myApp {
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+			.green {
+				width: 100px;
+				height: 100px;
+				background: green;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="myApp">
+			<div v-bind:class="{green:isGreen}">	<!-- v-bind:动态绑定属性 -->
+				
+			</div>
+		</div>
+
+		<script src="vue.min.js"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:"#myApp",
+				data:{
+					isGreen:true,
+				},
+				methods:{
+
+				}
+			});
+		</script>
+	</body>
+</html>
