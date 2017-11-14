@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Vue_2双向绑定基本原理</title>
+	</head>
+	<body>
+		<input type="text"  id="myApp" v-model="Young" />
+		<span id="myApp-2">{{Young}}</span>
+
+		<script>
+			var obj = {};
+			Object.defineProperty(obj,"Young",{
+				set:function(val){
+					document.getElementById("myApp-2").innerHTML = val;
+					document.getElementById("myApp").value = val;
+				}
+			});
+			document.getElementById("myApp").onkeyup = function(e){
+				obj.Young = e.target.value;
+			}
+			obj.Young = "hello";
+			
+		</script>
+	</body>
+</html>
