@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue_9条件渲染3v-show</title>
+</head>
+<body>
+	<!-- v-show 的元素始终会被渲染并保留在 DOM 中。v-show 只是简单地切换元素的 CSS 属性 display。 -->
+	<!-- v-show 不支持 <template> 元素，也不支持 v-else -->
+	<div id="myApp">
+		<h1 v-show="show">hello world</h1>
+	</div>
+	<script src="vue.min.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#myApp",
+			data:{
+				show:false
+			},
+			methods:{
+
+			}
+		})
+	</script>
+</body>
+</html>
