@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue_11数据绑定</title>
+</head>
+<body>
+	
+	<div id="myApp" v-text="txt"  v-html="html">
+		
+	</div>
+
+
+	<script src="vue.min.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#myApp",
+			data:{
+				txt:"<h1>h1h1h1h1h1h1h1</h1>",
+				html:"<h1>h1h1h1h1h1h1h1</h1>"
+			},
+			methods:{
+
+			}
+		})
+	</script>
+</body>
+</html>
