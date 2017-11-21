@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Vue_1</title>
+	</head>
+	<body>
+		<div id="myApp">
+			<input type="text" name="" v-model="message">
+			{{message}} 		<!-- 模板 -->
+		</div>
+
+		<div id="myApp-2">
+			<span v-bind:title="message">	<!-- 绑定 DOM 元素属性 -->
+				鼠标悬停查看加载信息
+			</span>
+		</div>
+
+		<script src="vue.min.js"></script>
+		<script type="text/javascript">
+			/*简洁的模板语法来声明式的将数据渲染进 DOM 的系统*/
+			var app = new Vue({
+				el:"#myApp",			//element  渲染myApp下的所有DOM节点
+				data:{
+					message:"hello world"
+				}
+			})
+
+			var app2 = new Vue({
+				el:"#myApp-2",
+				data:{
+					message:"页面加载于" + new Date().toLocaleString()
+				}
+			})
+			
+
+			//访问器属性（ES5）
+			//Object.defineProperty()方法直接在一个对象上定义一个新属性，或者修改一个已经存在的属性， 并返回这个对象。
+			//Object.defineProperty(obj, prop, descriptor)
+			//obj 需要定义属性的对象。
+			//prop 需被定义或修改的属性名。
+			//descriptor 需被定义或修改的属性的描述符。
+			var obj = {};
+			Object.defineProperty(obj,"young",{	
+				get:function(){
+					//return "hello";
+					console.log(".....");
+				},
+				set:function(val){
+					console.log(val+"....");
+				}
+			})
+
+			obj.young = "Younger";		//Younger....
+
+			obj.young;		//.....
+
+			
+		</script>
+	</body>
+</html>
