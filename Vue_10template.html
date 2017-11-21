@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue_10template</title>
+</head>
+<body>
+	
+	<div id="myApp">
+		<!-- template不会像div一样在元素外面出现盒子容器 -->
+		<!-- 因为 v-if 是一个指令，所以必须将它添加到一个元素上。但是如果想切换多个元素呢？此时可以把一个 <template> 元素当做不可见的包裹元素，并在上面使用 v-if。最终的渲染结果将不包含 <template> 元素。 -->
+		<template v-if="show">
+			<h1>hh1h1h1h1h1h1</h1>
+			<p>pppppppppppppp</p>
+			<h2>h2h2h2h2h2h2h2</h2>
+		</template>
+	</div>
+
+	<script src="vue.min.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#myApp",
+			data:{
+				show:true
+			},
+			methods:{
+
+			}
+		})
+	</script>
+</body>
+</html>
