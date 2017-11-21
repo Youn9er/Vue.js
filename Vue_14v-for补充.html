@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue_14v-for补充</title>
+</head>
+<body>
+	<ul id="myApp">
+		<li v-for="n in 10">
+			{{msg}}
+		</li>
+	</ul>
+
+	<script src="vue.min.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#myApp",
+			data:{
+				msg:"Young"
+			},
+			methods:{
+
+			}
+		})
+	</script>
+</body>
+</html>
