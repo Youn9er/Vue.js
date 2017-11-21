@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue_7computed计算属性</title>
+</head>
+<body>
+	<div id="myApp">
+		<div>
+			{{firstName}},{{lastName}} = {{fullName}}
+		</div>
+	</div>
+	
+	<script src="vue.min.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#myApp",
+			data:{
+				firstName:"Young",
+				lastName:"Gang"
+			},
+			computed: {
+				// 计算属性的 getter
+			    fullName:{
+			    	get:function(){
+			    		return this.firstName + " " + this.lastName
+			    	},
+			    	set:function(newVal,oldVal){
+			    		var arr = newVal.split(" ");
+			    		firstName = arr[0];
+			    		lastName = arr[1];
+			    	}
+			    }
+			}
+		})
+
+	</script>
+</body>
+</html>
