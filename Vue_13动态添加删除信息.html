@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue_13动态添加删除信息</title>
+</head>
+<body>
+	<div id="myApp">
+		userName:<input type="text" name="" v-model="name" />
+		age:<input type="number" name="" v-model="age" />
+		<button type="" @click="add">Add</button>
+
+
+		<ul>
+			<!-- <li v-for="(val, index) in personMsg">
+				{{val}}
+				<button type="" @click="del(index)">Del</button>
+			</li> -->
+			<li v-for="(val, index) in personMsg">
+				name: {{val.name}} age: {{val.age}}
+				<button type="" @click="del(index)">Del</button>
+			</li>
+		</ul>	
+	</div>
+	
+
+	<script src="vue.min.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#myApp",
+			data:{
+				personMsg:[],
+				name:"",
+				age:""
+			},
+			methods:{
+				add:function(){
+					//this.personMsg.push("name: " + this.name+ " " + "age: " + this.age)
+					this.personMsg.push({name:this.name,age:this.age});
+					this.name = "";
+					this.age = "";	
+				},
+				del:function(index){
+					this.personMsg.splice(index, 1);
+				}
+			}
+		})
+	</script>
+</body>
+</html>
