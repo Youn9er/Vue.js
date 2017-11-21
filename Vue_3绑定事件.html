@@ -6,18 +6,30 @@
 	</head>
 	<body>
 		<div id="myApp">
+
+			<!-- v-on:绑定事件 -->
 			<button v-on:click="fn()">click1</button>
-			<button v-on:click="fn1(3,4)">click2</button>	<!-- v-on:绑定事件 -->
+			<button v-on:click="fn1(3,4)">click2</button>	
 			<button v-on:click="fn2()">click3</button>
 
 			<button v-on:click="fn3">点击次数</button>
 			<span v-model="message">您点击了{{message}}次</span>
 
+			<!-- 不调用方法，直接写表达式 -->
 			<button v-on:click="message++">点击次数</button>
 			<span v-model="message">您点击了{{message}}次</span>
 
-			<button @click="fn3">点击次数简写</button>	<!-- v-on简写形式@click -->
+
+			<!-- v-on简写形式@click -->
+			<button @click="fn3">点击次数简写</button>	
 			<span v-model="message">您点击了{{message}}次</span>
+
+
+			<!--<button>事件源e</button>button>-->
+			<button v-on:click="fn4($event)">事件源e</button>	
+			
+			<!--<button>事件源e2</button>button>-->
+			<button v-on:click="fn5">事件源e2</button>  
 		</div>
 		
 		<script src="vue.min.js"></script>
@@ -38,7 +50,15 @@
 						console.log(event.target);
 					},
 					fn3:function(){
-						this.message++;
+						this.message++;				//this永远指向当前vue对象
+					},
+
+					/*使用e的两种方式*/
+					fn4:function(e){
+						console.log(e.target);
+					},
+					fn5:function(){
+						console.log(event.target);
 					}
 				}
 			})
