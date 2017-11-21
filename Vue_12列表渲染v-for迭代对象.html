@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue_12列表渲染v-for迭代对象</title>
+</head>
+<body>
+	<ul id="myApp">
+		<li v-for="val in person">
+			{{val}}
+		</li>
+		<li v-for="(val, key) in person">
+			{{key}}:{{val}}
+		</li>
+		<li v-for="(val, key, index) in person">
+			{{index}}: {{key}}: {{val}}
+		</li>
+	</ul>
+
+
+	<script src="vue.min.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#myApp",
+			data:{
+				person:{
+					firstName:"Young",
+					lastName:"Gang",
+					age:22
+				}
+			}
+		})
+	</script>
+</body>
+</html>
