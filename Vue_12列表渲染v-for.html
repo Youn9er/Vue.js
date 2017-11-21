@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue_12列表渲染v-for</title>
+</head>
+<body>
+	<!-- 用 v-for 指令根据一组数组的选项列表进行渲染。v-for 指令需要使用 item in items 形式的特殊语法，items 是源数据数组并且 item 是数组元素迭代的别名。 -->
+	<ul id="myApp">
+		<li v-for="(val, index) in arr">
+			{{index}}{{val}}
+		</li>
+	</ul>
+	<script src="vue.min.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#myApp",
+			data:{
+				arr:["a","b","c"]
+			},
+			methods:{
+
+			}
+		})
+	</script>
+</body>
+</html>
