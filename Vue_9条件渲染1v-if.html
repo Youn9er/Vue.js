@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue_9条件渲染v-if</title>
+</head>
+<body>
+	
+	<div id="myApp">
+		<!-- v-if条件块 -->
+		<div v-if="show">
+			Vue条件渲染v-if
+		</div>
+
+		<!-- v-else 指令来表示 v-if 的“else 块” -->
+		<!-- v-else 元素必须紧跟在带 v-if 或者 v-else-if 的元素的后面，否则它将不会被识别。 -->
+		<div v-else>
+			Vue条件渲染v-else
+		</div>
+	</div>
+
+
+
+	<script src="vue.min.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#myApp",
+			data:{
+				show:false
+			},
+			methods:{
+
+			}
+		})
+	</script>
+</body>
+</html>
