@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue_6动态修改元素样式</title>
+</head>
+<body>
+	
+	<div id="myApp">
+		
+		<div :style="{background:backgroundStyle,margin:marginStyle}">Vue动态修改元素样式</div>
+
+		<!-- 使用对象结构修改样式 -->
+		<div :style="styleObj">	</div>
+
+		<!-- 使用数组结构修改样式 -->
+		<div :style="[styleA,styleB,styleC]">	</div>
+	</div>
+
+	<script src="vue.min.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#myApp",
+			data:{
+				backgroundStyle:"red",
+				marginStyle:"10px",
+				styleObj:{
+					width:"200px",
+					height:"200px",
+					background:"red"
+				},
+				styleA:{
+					width:"100px"
+				},
+				styleC:{
+					height:"100px"
+				},
+				styleB:{
+					background:"green"
+				}
+			},
+			methods:{
+
+			}
+		})
+	</script>
+</body>
+</html>
