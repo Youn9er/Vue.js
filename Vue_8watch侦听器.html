@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue_8watch侦听器</title>
+</head>
+<body>
+	<div id="myApp">
+		<div>
+			{{firstName}},{{lastName}} = {{fullName}}
+		</div>
+	</div>
+	
+	<script src="vue.min.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#myApp",
+			data:{
+				firstName:"Young",
+				lastName:"Gang",
+				fullName:"Young Gang"
+			},
+			/*Vue 通过 watch 选项提供了一个更通用的方法，来响应数据的变化。当需要在数据变化时执行异步或开销较大的操作时，这个方式是最有用的。*/
+			watch:{
+				fullName:function(val){
+					this.fullName = val + " " + this.lastName;
+				}
+			}
+		})
+
+	</script>
+</body>
+</html>
