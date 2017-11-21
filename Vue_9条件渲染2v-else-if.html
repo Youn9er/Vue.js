@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue_9条件渲染v-else-if</title>
+</head>
+<body>
+
+	<!-- v-else-if,充当 v-if 的“else-if 块”，可以连续使用： -->
+	<div id="myApp">
+		<div v-if="type==='A'">
+			A
+		</div>
+		<div v-else-if="type==='B'">
+			B
+		</div>
+		<div v-else-if="type==='C'">
+			C
+		</div>
+		<div v-else>
+			Not A/B/C
+		</div>
+	</div>
+	
+	<script src="vue.min.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#myApp",
+			data:{
+				type:"A"		//A
+			},
+			methods:{
+
+			}
+		})
+	</script>
+</body>
+</html>
