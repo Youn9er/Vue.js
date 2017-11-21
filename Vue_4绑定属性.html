@@ -5,21 +5,39 @@
 		<title>Vue_4绑定属性</title>
 		<style type="text/css">
 			#myApp {
-				width: 200px;
-				height: 200px;
+				width: 600px;
+				height: 600px;
 				background: red;
 			}
 			.green {
-				width: 100px;
-				height: 100px;
+				width: 200px;
+				height: 200px;
 				background: green;
+			}
+			.font {
+				font-size: 30px;
+				color: gray;
+				font-weight: bold;
 			}
 		</style>
 	</head>
 	<body>
-		<div id="myApp">
-			<div v-bind:class="{green:isGreen}">	<!-- v-bind:动态绑定属性 -->
-				
+		<div id="myApp" >
+
+			<!-- v-bind:动态绑定属性,若msg改变，则date-id也跟着改变-->
+			<div  v-bind:class="{green:isGreen,font:isFont}" v-bind:date-id="msg">	
+				Vue动态绑定.font属性
+			</div>
+
+			
+			<!-- 使用对象结构动态改变属性 -->
+			<div  v-bind:class="classObj" v-bind:date-id="msg">	
+				Vue动态绑定.font属性
+			</div>
+	
+			<!-- 使用数组结构动态改变属性 -->
+			<div  v-bind:class="[classA,classB]" v-bind:date-id="msg">	
+				Vue动态绑定.font属性
 			</div>
 		</div>
 
@@ -28,7 +46,15 @@
 			var vm = new Vue({
 				el:"#myApp",
 				data:{
+					msg:"aaa",
 					isGreen:true,
+					isFont:true,
+					classObj:{
+						red:true,
+						green:true
+					},
+					classA:"red",
+					classB:"font"
 				},
 				methods:{
 
