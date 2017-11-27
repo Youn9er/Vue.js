@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue_18组件_局部组件</title>
+</head>
+<body>
+	<div id="myApp">
+		<my-demo></my-demo>
+		<my-demo2></my-demo2>
+	</div>
+
+	<script src="vue.min.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:"#myApp",
+			components:{					//定义局部组件
+				"my-demo":{					//可以定义多个局部组件
+					template:"<div>Younger</div>"	//组件模板
+				},
+				"my-demo2":{
+					template:"<p>Gang</p>"
+				}
+			}
+		})
+	</script>
+</body>
+</html>
