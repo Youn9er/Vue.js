@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue_18组件_Prop传递数据</title>
+</head>
+<body>
+	<div id="myApp">
+		<my-demo v-bind:msg="msg" msgs="Gang"></my-demo>
+	</div>
+
+	<script src="vue.min.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#myApp",
+			data:{
+				msg:"Young"
+			},
+			components:{					
+				"my-demo":{					
+					template:"<div>{{msg}},{{msgs}}</div>",
+					// 声明 props
+					props:['msg','msgs']
+					// 就像 data 一样，prop 也可以在模板中使用
+  					// 同样也可以在 vm 实例中通过 this.message 来使用
+				}
+			}
+		})
+	</script>
+</body>
+</html>
