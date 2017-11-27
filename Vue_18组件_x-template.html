@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue_18组件_x-template</title>
+</head>
+<body>
+	<div id="myApp">
+		<!-- <my-demo v-bind:msg="msg" msgs="Gang"></my-demo> -->
+		<my-demo>
+			<!-- <h1>hhhhhhhh</h1> -->
+		</my-demo>
+	</div>
+
+	<script src="vue.min.js"></script>
+
+	<!-- 定义模板 -->
+	<script type="text/x-template" id="myApp2">
+		<div>
+			<h1>H1H1H1</h1>
+			<slot>
+				当没有内容时
+			</slot>
+			<p>PPPPPP</p>	
+		</div>
+	</script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#myApp",
+			data:{
+				msg:"Young"
+			},
+			components:{					
+				"my-demo":{					
+					//template:"<div>{{msg}},{{msgs}}</div>",
+					template:"#myApp2",
+					// 声明 props
+					props:['msg','msgs']
+					// 就像 data 一样，prop 也可以在模板中使用
+  					// 同样也可以在 vm 实例中通过 this.message 来使用
+				}
+			}
+		})
+	</script>
+</body>
+</html>
