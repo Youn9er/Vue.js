@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue_15v-for_template</title>
+</head>
+<body>
+	<div id="myApp">
+		<!-- template:不可见的包裹元素 -->
+		<template v-for="n in 3">
+			<h1>h1h1h1h1</h1>
+			<p>pppppppp</p>
+			<h2>h2h2h2h2</h2>
+		</template>
+	</div>
+
+	<script src="vue.min.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#myApp",
+			data:{
+
+			},
+			methods:{
+
+			}
+		})
+	</script>
+</body>
+</html>
