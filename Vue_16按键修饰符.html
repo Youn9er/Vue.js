@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue_16按键修饰符</title>
+</head>
+<body>
+	<div id="myApp">
+		数字：<input type="text" name="" @keyup.65="fn">
+		enter：<input type="text" @keyup.enter="fnEnter">
+		space: <input type="text" name="" v-on:keyup.space="fnSpace">
+		esc: <input type="text" name="" v-on:keyup.esc="fnEsc">
+		tab: <input type="text" name="" v-on:keyup.tab="fnTab">
+		way: <input type="text" name="" @keyup.up.down.right.left="fnWay">
+		alt: <input type="text" name="" @keyup.alt="fn">
+	</div>
+
+	<script src="vue.min.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#myApp",
+			data:{
+
+			},
+			methods:{
+				fn:function(){
+					console.log("Younger");
+				},
+				fnEnter:function(){
+					console.log("按下了'enter'键");
+				},
+				fnSpace:function(){
+					console.log("按下了'space'键");
+				},
+				fnEsc:function(){
+					console.log("按下了'esc'键");
+				},
+				fnTab:function(){
+					console.log("按下了'tab'键");
+				},
+				fnWay:function(){
+					console.log("按下了'方向键'");
+				}
+			}
+		})
+	</script>
+</body>
+</html>
