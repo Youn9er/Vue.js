@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue_18组件_全局组件</title>
+</head>
+<body>
+	<div id="myApp">
+		<my-demo></my-demo>	
+		<my-demo></my-demo>
+	</div>
+	<div id="myApp1">
+		<my-demo></my-demo>
+	</div>
+	
+	<script src="vue.min.js"></script>
+	<script type="text/javascript">
+		//全局组件:在所有的new Vue实例中都能使用
+		//注册
+		Vue.component('my-demo',{
+			template:"<div>Younger</div>"
+		});
+
+
+		//创建根实例
+		new Vue({
+			el:"#myApp",
+			data:{
+
+			},
+			methods:{
+
+			}
+		});
+		new Vue({
+			el:"#myApp1",
+			data:{
+
+			},
+			methods:{
+
+			}
+		})
+	</script>
+</body>
+</html>
