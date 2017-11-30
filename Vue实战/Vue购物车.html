@@ -28,8 +28,8 @@
                 </thead>
                 <tbody v-for="product in productList">
                     <tr>
-                        <td><input type="checkbox" name="" id="" v-on:click="check"></td>
-                            <td><img v-bind:src="product.productImg" alt="无法显示图片，刷新试试" title="黄鹤楼" width="200px"></td>  <!--使用v-bind绑定元素固有属性 -->
+                        <td><input type="checkbox" name="" id="" v-on:click="addCart(product)"></td>
+                            <td><img v-bind:src="product.productImg" alt="无法显示图片，刷新试试" v-bind:title="product.productName" width="200px"></td>  <!--使用v-bind绑定元素固有属性 -->
                         <td>{{product.productName}}</td>
                         <td>
                             <ul>
@@ -38,9 +38,9 @@
                         </td>
                         <td>{{product.productPrice}}</td>
                         <td>
-                            <button v-on:click="reduce">-</button>
+                            <button v-on:click="reduce(product)">-</button>
                             <input type="text" v-bind:value="product.productQuentity">
-                            <button v-on:click="add">+</button>
+                            <button v-on:click="add(product)">+</button>
                         </td>
                         <td>
                             {{product.productPrice * product.productQuentity}}
@@ -69,13 +69,14 @@
                 el: "#shop",
                 data: {
                     productList: [],
-                    totalPrice: ""
+                    cartList: [],
+                    totalPrice: 0
                 },
                 computed: {
 
                 },
                 methods: {
-                    addProduct: function () {
+                    addProduct: function () {   //添加商品
                         var newProduct = {
                             "productId": 333,
                             "productName": "王老吉",
@@ -85,21 +86,54 @@
                         };
                         this.productList.push(newProduct);
                     },
-                    // removeProduct: function() {
-                    //     this.productList
+                    addCart: function (product){    //
+                        var index = this.cartList.indexOf(product);
+                        if ( index == -1 ) {
+                            this.cartList.push(product);
+                        } else {
+                            this.cartList.splice(index,1);
+                        }
+                        this.countTotalPrice();
+                    },
+                    countTotalPrice: function () {    
+                        var _this = this;
+                        this.totalPrice = 0;
+                        //this._indexOf(this.cartList, prod);
+                        // var index = this.cartList.indexOf(prod);
+                        // if (index == -1 ) {
+                        //     this.cartList.push(prod);
+                        // } else {
+                        //     this.cartList.splice(index, 1);
+                        // }
+                        this.cartList.forEach(function (product){
+                            _this.totalPrice += product.productPrice * product.productQuentity;
+                        });
+                        //this.totalPrice = this.productList.productPrice * this.productList.productQuentity;
+                    },
+                    // _indexOf: function (arr, element){
+                    //     var index = arr.indexOf(element);
+                    //     if ( index == -1 ) {
+                    //         arr.push(element);
+                    //     } else {
+                    //         arr.splice(index,1);
+                    //     }
                     // },
-                    check: function () {
-                        this.totalPrice = this.productPrice * this.productQuentity;
+                    reduce: function (product) {
+                        if(product.productQuentity <= 0){
+                            product.productQuentity = 0;
+                        }else{
+                            product.productQuentity--;                            
+                        }
+                        this.countTotalPrice();
+                        //console.log(product.productQuentity);
                     },
-                    reduce: function () {
-                        this.productQuentity -= 1;
-                        alert("hahah");
-                    },
-                    add: function () {
-                        this.productQuentity += 1;
+                    add: function (product) {
+                        product.productQuentity ++;
+                        this.countTotalPrice();
+                        //console.log(product.productQuentity);
                     }
                 },
-                mounted: function () {  //挂载
+                mounted: function () {  //挂载 初始化
                     var _this = this;
                     this.$nextTick(function(){      //所有组件一起挂载
                         axios.get('products.json').then(function(response){
