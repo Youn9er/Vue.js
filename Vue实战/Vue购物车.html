@@ -11,7 +11,7 @@
         </style>
     </head>
     <body>
-        <complate id="shop">
+        <div id="shop">
             <button v-on:click="addProduct">添加商品</button>
             <table>
                 <thead>
@@ -50,7 +50,7 @@
                 </tbody>
                 <tfoot>
                     <td colspan="6">
-                        <input type="checkbox" name="" id="" >全选
+                        <input type="checkbox" name="" id="" v-on:click="checkAll">全选
                     </td>
                     <td>
                         总计{{totalPrice}}
@@ -60,9 +60,9 @@
                     </td>
                 </tfoot>
             </table>
-        </complate>
+        </div>
         
-        <script src="js/vue.min.js"></script>
+        <script src="js/vue.js"></script>
         <script src="node_modules/axios/dist/axios.min.js"></script>
         <script>
             var vm = new Vue({
@@ -131,6 +131,10 @@
                         product.productQuentity ++;
                         this.countTotalPrice();
                         //console.log(product.productQuentity);
+                    },
+                    checkAll: function (){
+                        this.addCart();
+                        this.countTotalPrice();
                     }
                 },
                 mounted: function () {  //挂载 初始化
