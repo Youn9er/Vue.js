@@ -45,12 +45,12 @@
                         <td>
                             {{product.productPrice * product.productQuentity}}
                         </td>
-                        <td><a href="#">删除</a></td>
+                        <td><a href="#" v-on:click="remove(product)">删除</a></td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <td colspan="6">
-                        <input type="checkbox" name="" id="" v-on:click="checkAll">全选
+                        <input type="checkbox" name="" id="">全选
                     </td>
                     <td>
                         总计{{totalPrice}}
@@ -132,9 +132,13 @@
                         this.countTotalPrice();
                         //console.log(product.productQuentity);
                     },
-                    checkAll: function (){
-                        this.addCart();
-                        this.countTotalPrice();
+                    // checkAll: function (){
+                    //     this.addCart();
+                    //     this.countTotalPrice();
+                    // }
+                    remove: function (product){
+                        var index = this.productList.indexOf(product);
+                        this.productList.splice(index,1);
                     }
                 },
                 mounted: function () {  //挂载 初始化
