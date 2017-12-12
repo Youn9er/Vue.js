@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue雏形</title>
+</head>
+<body>
+    <div id="box">
+        <input type="text" v-model="msg">
+        <br>
+        <input type="text" v-model="msg">
+        <br>
+        {{msg}}
+        <br>
+        {{msg2}}
+        <br>
+
+        <ul>
+            <li v-for="(value, index) in arr">
+                {{value}}   {{index}}
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="(key, value) in json">
+                {{value}}: {{key}}
+            </li>
+        </ul>
+        <hr>
+        <div v-for="item in arr">
+                {{item}}
+        </div>
+        
+        <br>
+        {{msg3}}
+        <br>
+        {{json}}
+    </div>
+    <script src="./bin/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#box',
+            data: {
+                msg: 'Welcom Vue',
+                msg2: 23,
+                arr: ['Young','Gang','Zhang','tian','tian'],
+                msg3: true,
+                json: {'name':'Young','age':22,'sex':'male'}
+            }
+        })
+    </script>
+</body>
+</html>
