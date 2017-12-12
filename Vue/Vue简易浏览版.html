@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./lib/bootstrap.min.css">
+    <script src="./lib/jquery-3.2.1.min.js"></script>
+    <script src="./lib/bootstrap.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container" id="box">
+        <form rolo="form">
+            <div class="form-group">
+                <label for="username">姓名：</label>
+                <input type="text" id="username" class="form-control" placeholder="请输入用户名" v-model="username">
+            </div>
+            <div class="form-group">
+                <label for="age">年龄：</label>
+                <input type="text" id="age" class="form-control" placeholder="请输入年龄" v-model="age">
+            </div>
+            <div class="form-group">
+                <input type="button" value="添加" class="btn btn-primary" v-on:click="add">
+                <input type="reset" value="重置" class="btn btn-danger">
+            </div>
+        </form>
+        <hr>
+        <table class="table table-bordered table-hover">
+            <caption class="h2 text-center text-info">用户信息表</caption>
+            <tr class="text-danger">
+                <th class="text-center">序号</th>
+                <th class="text-center">姓名</th>
+                <th class="text-center">年龄</th>
+                <th class="text-center">操作</th>
+            </tr>
+            <tr class="text-center" v-for="(value,index) in myData">
+                <td>{{index+1}}</td>
+                <td v-for="item in value">{{item}}</td>
+                <!-- <td>{{value.age}}</td> -->
+                <td>
+                    <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#layer" v-on:click="nowIndex = index">删除</button>
+                </td>
+            </tr>
+            <!-- <tr class="text-center">
+                    <td>2</td>
+                    <td>Tiantian</td>
+                    <td>22</td>
+                    <td>
+                        <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#layer">删除</button>
+                    </td>
+            </tr> -->
+            <tr v-show="myData.length!=0">
+                <td colspan="4" class="text-right">
+                    <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#layer" @click="nowIndex = -2">全部删除</button>
+                </td>
+            </tr>
+            <tr v-show="myData.length==0">
+                <td colspan="4" class="text-center text-muted">
+                    <p>暂无数据...</p>
+                </td>
+            </tr>
+        </table>
+
+        <!-- 模态框，弹出层 -->
+        <div role="dialog" class="modal fade" id="layer">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                        <h4 class="modal-tittle">确认删除？</h4>
+                    </div>
+                    <div class="modal-body text-right">
+                        <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" v-on:click="remove(nowIndex)">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./lib/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                myData: [],
+                username: "",
+                age: "",
+                nowIndex: -100      
+            },
+            methods: {
+                add: function(){
+                    vm.myData.push({"name": vm.username,"age": vm.age});
+                    vm.username = "";
+                    vm.age = "";
+                },
+                remove: function(index){
+                    if (index == -2 ) {
+                        vm.myData = [];
+                    } else {
+                        vm.myData.splice(index,1)
+                    } 
+                }
+            }
+        })
+    </script>
+</body>
+</html>
