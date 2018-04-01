@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <img v-bind:src="url" alt="">
+    </div>
+    
+
+    <script src="./lib/vue.js"></script>
+    <script>
+        //v-bind:绑定属性
+        var vm = new Vue({
+            el : "#box",
+            data () {
+                return {
+                    url : "https://www.baidu.com/img/bd_logo1.png" 
+                }
+            },
+            methods: {
+                
+            }
+        })
+    
+    
+    </script>
+</body>
+</html>
