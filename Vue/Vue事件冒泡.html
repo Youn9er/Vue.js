@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件冒泡</title>
+</head>
+<body>
+        <div id="box">
+            <div @click = "show()">
+                <input type="button" value="点击" @click.stop = "show2()">
+                <input type="button" value="点击" @contextmenu.prevent = "show3()">
+
+            </div>
+        </div>
+
+
+    <script src="./lib/vue.js"></script>
+    <script>
+        var vm =  new Vue({
+            el:  "#box",
+            data () {
+                return {
+                    
+                }
+            },
+            methods: {
+                show : function () {
+                    alert(1)
+                },
+                show2 : function (ev) {
+                    alert(2);
+                    //ev.cancelBubble = true; 阻止冒泡
+                },
+                show3 : function (ev) {
+                    alert(3);
+                    //ev.preventDefault();    阻止默认行为
+                }    
+            }
+        })
+    
+    
+    </script>
+</body>
+</html>
