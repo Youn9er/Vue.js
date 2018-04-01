@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="btn" @click = "show($event,b)">
+        <button>点击</button>
+    </div>
+
+    <script src="./lib/vue.js"></script>
+    <script>
+        var vm = new new Vue({
+            el: "#btn",
+            data () {
+                return {
+                    
+                }
+            },
+            methods: {
+                show:function (ev,num) {
+                    // alert(1)
+                    alert(ev.clientX);  //事件对象
+                    alert(12);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
