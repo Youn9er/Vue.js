@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" v-bind:style = "{color: color, fontSize: fontSize}">
+        Vue style
+        <p :style = "styleObject">
+            Vue style object
+        </p>
+    </div>
+
+    <script src="./lib/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#box",
+            data () {
+                return {
+                    color: "red",
+                    fontSize: "24px",
+                    styleObject: {
+                        color: "gray",
+                        fontSize: "28px"
+                    }
+                }
+            },
+            methods: {
+                
+            }
+        })
+
+    </script>
+</body>
+</html>
