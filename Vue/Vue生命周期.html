@@ -7,13 +7,16 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="box">
+        <img :src="url" alt="清明时节雨纷纷">
+    </div>
     <script src="./lib//vue.js"></script>
     <script>
         new Vue({
-            el: "",
+            el: "#box",
             data () {
                 return {
-                    
+                    url: "https://www.baidu.com/img/qm_65c94d44216a2c39191c1c588de0c821.gif"
                 }
             },
             methods: {
