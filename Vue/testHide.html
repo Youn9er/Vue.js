@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #test {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="test"  v-show="true" >
+        
+        
+        <div v-for="(key,value) in hideArr" :model="key">
+            {{key}}
+        </div>
+        
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            data () {
+                return {
+                    hideArr: [1,32,4,22,33,555,666,1213,87,434,767],
+                    id: [8,9,10,33,44,55,66,77]
+                }
+            }  
+        }).$mount('#test')
+        console.log(vm.hideArr);
+        
+    </script>
+
+</body>
+</html>
