@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-父子组件</title>
+</head>
+<body>
+    <div id="box">
+        <parentcom></parentcom>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#box",
+            data () {
+                return {
+                    a: 'parentCom'
+                }
+            },
+            components: {
+                'parentcom': {
+                    data () {
+                        return {
+                            message: "父组件数据"
+                        }
+                    },
+                    template: '<h1>parentCom父组件{{message}}</h1><childcom></childcom>',
+                    components: {
+                        'childcom': {
+                            template: '<h2>childCom子组件</h2>'
+                        }
+                    }
+                }
+            }   
+        })
+    </script>
+</body>
+</html>
