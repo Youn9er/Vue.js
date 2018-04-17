@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" v-bind:style = "{color: color, fontSize: fontSize}">
+        Vue style
+        <p :style = "styleObject">
+            Vue style object
+        </p>
+    </div>
+
+    <span v-red>自定义指令</span>
+
+    <script src="./lib/vue.js"></script>
+    <script>
+        //已废弃
+        Vue.directive("red",function(){
+            this.el.style.background = "red";
+        });
+        var vm = new Vue({
+            el: "#box",
+            data () {
+                return {
+                    color: "red",
+                    fontSize: "24px",
+                    styleObject: {
+                        color: "gray",
+                        fontSize: "28px"
+                    }
+                }
+            },
+            methods: {
+                
+            }
+        })
+
+    </script>
+</body>
+</html>
