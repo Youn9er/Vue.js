@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-父子组件</title>
+</head>
+<body>
+    <div id="dr01">
+        <child01></child01>
+    </div>
+    <script src="./../lib/vue.js"></script>
+    <script>
+        Vue.component("child01", {
+            data: function() {
+                return {
+                    cMsg: "this is child msg!",
+                    cParentMsg: this.$parent.dr01Msg, //child01的上级信息就是dr01的dr01Msg
+                    cRootMsg: this.$root.rootMsg, //child01的根信息就是dr01的rootMsg
+                }
+            },
+            template: "<div>cMsg: {{cMsg}}, cParentMsg: {{cParentMsg}}, cRootMsg: {{cRootMsg}}</div>"
+                +"<grandson01 :s-parent-msg='cMsg'></grandson01>"
+        });
+        //自定义孙代组件grandson01，
+        Vue.component("grandson01", {
+            data: function() {
+                return {
+                    sMsg: "this is grandsonMsg1",
+                    sRootMsg: this.$root.rootMsg, //grandson01根信息就是dr01的rootMsg
+                }
+            },
+            //grandson01上级信息就是child01的cMsg,
+        　  //在这里使用props属性，将子代cMsg赋给孙代的“sParentMsg”，示例：在子代模板中：<grandson01 :s-parent-msg='cMsg'></grandson01>
+            props:["sParentMsg"],
+            template: "<div>sMsg: {{sMsg}}, sParentMsg: {{sParentMsg}}, sRootMsg: {{sRootMsg}}</div>"
+        })
+        var dr01 = new Vue({
+            el: "#dr01",
+            data: {
+                dr01Msg: "this is dr01Msg!",
+                rootMsg: "this is rootMsg!",
+            },
+        });
+    </script>
+</body>
+</html>
