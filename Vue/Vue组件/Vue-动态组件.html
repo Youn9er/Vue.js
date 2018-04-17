@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-动态组件</title>
+</head>
+<body>
+    <div id="box">
+        <input type="button" @click="a = 'aaa' " value="组件A">
+        <input type="button" @click="a = 'bbb' " value="组件B">
+        <!-- 动态组件 -->
+        <component :is="a"></component> 
+    </div>
+
+    <script src="./../lib/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#box",
+            data () {
+                return {
+                    a: "aaa"
+                }
+            },
+            components: {
+                "aaa": {
+                    template: "<h1>组件A</h1>"
+                },
+                "bbb": {
+                    template: "<h1>组件B</h1>"
+                }
+            }
+        })
+    
+    </script>
+</body>
+</html>
