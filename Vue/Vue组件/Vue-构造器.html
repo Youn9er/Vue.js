@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-构造器</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script src="./../lib/vue.js"></script>
+    <script>
+        //使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象
+        //创建构造器
+        var profile = Vue.extend({
+            template: "<p>{{firstName}}{{lastName}}aka{{alias}}</p>",
+            data () {
+                return {
+                    firstName: "Young",
+                    lastName: "Gang",
+                    alias: "Hello"
+                }
+            },
+            methods: {
+                
+            }
+        })
+        //创建profile实例，并挂载到一个元素上
+        new profile().$mount("#box")
+    
+    </script>
+</body>
+</html>
