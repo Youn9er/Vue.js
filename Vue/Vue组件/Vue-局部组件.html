@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-局部组件</title>
+</head>
+<body>
+    <div id="box">
+        <my-components></my-components>
+    </div>
+    <script src="./../lib/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#box",
+            data () {
+                return {
+                    message: "Young"
+                }
+            },
+            components: {
+                "my-components": {
+                    data () {
+                        return {
+                            message: "Vue"
+                        }
+                    },
+                    methods: {
+                        change: function () {
+                            alert("局部组件")
+                        }
+                    },
+                    template: '<h1 @click="change">Welcome {{message}}</h1>' //Welcome Vue
+                }
+            }
+        })
+    
+    </script>
+</body>
+</html>
