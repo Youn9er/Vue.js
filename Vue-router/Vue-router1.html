@@ -20,6 +20,11 @@
     <script src="../lib/vue.js"></script>
     <script src="../node_modules/vue-router/dist/vue-router.js"></script>
     <script>
+        new Vue({
+            el: '#box',
+            router: router,
+            template: App,
+        })
         //1.准备一个根组件
         var App = Vue.extend();
         //2.Home组件
@@ -31,21 +36,28 @@
             template: '<h2>新闻</h2>'
         });
 
-        //路由
-        var router = new VueRouter();
-
         //关联
-        router.map({
-            'Home': {
-                component: Home 
-            },
-            'News': {
-                component: News
-            }
-        })
+        const routers = [
+            {path: '/Home', component: Home},
+            {path: '/News', component: News}
+        ]
+        //路由
+        const router = new VueRouter({
+            routers
+        });
+
+       
+        // router.map({
+        //     'Home': {
+        //         component: Home 
+        //     },
+        //     'News': {
+        //         component: News
+        //     }
+        // })
 
         //启动路由
-        router.start(App,'#box');
+        //router.start(App,'#box');
     </script>
 </body>
 </html>
