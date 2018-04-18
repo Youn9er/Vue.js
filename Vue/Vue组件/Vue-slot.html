@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-slot</title>
+</head>
+<body>
+    <div id="box">
+        <aaa>
+            <ul>
+                <li>1111</li>
+                <li>2222</li>
+                <li>3333</li>
+            </ul>
+        </aaa>
+    </div>
+    <template id="aaa">
+        <h1>XXXXXXXX</h1>
+        <slot>这是默认的情况</slot>
+        <p>Welcome Vue</p>
+    </template>
+    <script src="../lib/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#box",
+            data () {
+                return {
+                    a: "aaa"
+                }
+            },
+            components: {
+                'aaa':{
+                    template: "#aaa"
+                }
+            }
+        })
+    
+    </script>
+</body>
+</html>
