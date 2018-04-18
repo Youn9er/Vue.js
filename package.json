@@ -1,0 +1,23 @@
+{
+  "name": "Vue.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gitMacTest.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Youn9er/Vue.js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Youn9er/Vue.js/issues"
+  },
+  "homepage": "https://github.com/Youn9er/Vue.js#readme",
+  "dependencies": {
+    "vue-router": "^3.0.1"
+  }
+}
