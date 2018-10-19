@@ -9,7 +9,8 @@
         >
         <item
             :todo = "todo"
-            v-for = "todo in filteredTodos"
+            v-for="todo in filteredTodos"
+            key = "todo.id"
             :key = "todo.id"
             @del = "deleteTodo"
         />
@@ -25,11 +26,14 @@
 <script>
     import Item from '../components/item.vue'
     import Tabs from '../components/tab.vue'
-    let id = 0
+    let id = 0;
     export default {
         data(){
             return {
+                todos:[
 
+                ],
+                filter: "all"
             }
         },
         components:{
@@ -37,11 +41,31 @@
             Tabs,
         },
         computed:{
-
+            filteredTodos(){
+                if(this.filter === "all"){
+                    return this.todos;
+                }
+                const completed = this.filter === "completed";
+                return this.todos.filter(todo => completed === todo.completed);
+            }
         },
         methods:{
-            addTodo() {
-
+            addTodo(e) {
+                this.todos.unshift({
+                    id : id++,
+                    content: e.target.value.trim(),
+                    completed:false
+                });
+                e.target.value = ""
+            },
+            deleteTodo(id) {
+                this.todos.splice(this.todos.findIndex(todo => todo.id === id),1)
+            },
+            toggleFilter(state){
+                this.filter = state;
+            },
+            clearAllCompleted() {
+                this.todos = this.todos.filter(todo => !todo.completed);
             }
         }
     }
