@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const isDev = process.env.NODE_ENV === "development"
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
@@ -33,13 +34,20 @@ const config = {
                 test: /\.jsx$/,
                 loader: "babel-loader"
             },
+            // {
+            //     test: /\.css$/,
+            //     // loader: "css-loader"
+            //     use: [
+            //         "style-loader",
+            //         "css-loader"
+            //     ]
+            // },
             {
                 test: /\.css$/,
-                // loader: "css-loader"
-                use: [
-                    "style-loader",
-                    "css-loader"
-                ]
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: "css-loader"
+                })
             },
             {
                 test: /\.(jpg)|(jpeg)|(gif)|(svg)|(png)$/,
@@ -74,22 +82,22 @@ const config = {
 if(isDev){
     config.devtool = "#cheap-module-eval-source-map";
     config.mode = "development";
-    // config.module.rules.push(
-    //     {
-    //         test:/\.styl/,
-    //         use:[
-    //             'style-loader',
-    //             'css-loader',
-    //             {
-    //                 loader:'postcss-loader',
-    //                 options:{
-    //                     sourceMap:true
-    //                 }
-    //             },
-    //             'stylus-loader'
-    //         ]
-    //     }
-    // ),    
+    config.module.rules.push(
+        {
+            test:/\.styl/,
+            use:[
+                'style-loader',
+                'css-loader',
+                {
+                    loader:'postcss-loader',
+                    options:{
+                        sourceMap:true
+                    }
+                },
+                'stylus-loader'
+            ]
+        }
+    ),
     
     config.devServer = {
         port:7998,
@@ -106,6 +114,39 @@ if(isDev){
     config.plugins.push(
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin()
+    )
+} else {
+    config.entry = {
+        app: path.resolve(__dirname, "src/index.js"),
+        vendor: ["vue"]
+    };
+    config.output.filename = "[name].[chunkhash:8].js"
+    config.module.rules.push(
+        {
+            test: /\.styl/,
+            use: ExtractTextPlugin.extract({
+                fallback: "style-loader",
+                use:[
+                    'css-loader',
+                    {
+                        loader:'postcss-loader',
+                        options:{
+                            sourceMap:true
+                        }
+                    },
+                    'stylus-loader'
+                ]
+            })
+        }
+    );
+    config.plugins.push(
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor'
+        }),
+        new ExtractTextPlugin("styles.[hash:16].css"),
+        webpack.optimize.CommonsChunkPlugin({
+            name: "runtime"
+        })
     )
 }
 module.exports = config;

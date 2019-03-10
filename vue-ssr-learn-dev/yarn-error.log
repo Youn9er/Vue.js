@@ -1,0 +1,72 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn add extract-text-webpack-plugin --dev
+
+PATH: 
+  /usr/local/bin:/Users/yangbaiqian/.rvm/gems/ruby-2.3.3/bin:/Users/yangbaiqian/.rvm/gems/ruby-2.3.3@global/bin:/Users/yangbaiqian/.rvm/rubies/ruby-2.3.3/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/yangbaiqian/Library/Android/sdk/tools:/Users/yangbaiqian/Library/Android/sdk/platform-tools:/Users/yangbaiqian/reactNative/gradle-4.9/bin:/usr/local/Cellar/android-ndk-r10e/r10e/ndk-build:/Users/yangbaiqian/.rvm/bin
+
+Yarn version: 
+  1.9.4
+
+Node version: 
+  8.11.4
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: http://10.40.189.154:7001/vue-template-compiler: ETIMEDOUT
+      at Timeout._onTimeout (/usr/local/lib/node_modules/yarn/lib/cli.js:138128:19)
+      at ontimeout (timers.js:498:11)
+      at tryOnTimeout (timers.js:323:5)
+      at Timer.listOnTimeout (timers.js:290:5)
+
+npm manifest: 
+  {
+    "name": "vue-ssr-learn-dev",
+    "version": "1.0.0",
+    "description": "learn vue",
+    "main": "src/index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+      "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js"
+    },
+    "author": "Younger",
+    "license": "ISC",
+    "devDependencies": {
+      "@babel/core": "^7.1.2",
+      "autoprefixer": "^9.2.1",
+      "babel-core": "^6.26.3",
+      "babel-helper-vue-jsx-merge-props": "^2.0.3",
+      "babel-loader": "^8.0.4",
+      "babel-plugin-syntax-jsx": "^6.18.0",
+      "babel-plugin-transform-vue-jsx": "^3.7.0",
+      "babel-preset-env": "^1.7.0",
+      "cross-env": "^5.2.0",
+      "css-loader": "^1.0.0",
+      "file-loader": "^2.0.0",
+      "html-webpack-plugin": "^3.2.0",
+      "mini-css-extract-plugin": "^0.4.4",
+      "postcss-loader": "^3.0.0",
+      "style-loader": "^0.23.1",
+      "stylus": "^0.54.5",
+      "stylus-loader": "^3.0.2",
+      "url-loader": "^1.1.2",
+      "vue": "^2.5.17",
+      "vue-loader": "^15.4.2",
+      "vue-router": "^3.0.1",
+      "vuex": "^3.0.1",
+      "webpack": "^4.21.0",
+      "webpack-cli": "^3.1.2",
+      "webpack-dev-server": "^3.1.9"
+    },
+    "dependencies": {
+      "vue-template-compiler": "^2.5.17"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
